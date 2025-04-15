@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TravelCostMate</title>
+</head>
+<body>
+    <div class="auth-form">
+        <h2>Welcome Back</h2>
+        <form id="loginForm" onsubmit="return validateLoginForm(event)">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password (max 8 chars)" maxlength="8" required>
+            <div id="loginCaptchaQuestion"></div>
+            <input type="text" id="loginCaptchaAnswer" placeholder="CAPTCHA Answer" required>
+            <div class="options">
+                <a href="#" onclick="loadResetPassword()">Forgot password?</a>
+            </div>
+            <button type="submit" class="submit-btn">Sign In</button>
+        </form>
+    </div>
+</body>
+</html>

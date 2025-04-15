@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TravelCostMate</title>
+</head>
+<body>
+    <div class="register-form">
+        <h2>Create Account</h2>
+        <form id="registerForm" onsubmit="return validateRegisterForm(event)">
+            <input type="text" id="regFirstName" placeholder="First Name" required>
+            <input type="text" id="regLastName" placeholder="Last Name" required>
+            <input type="tel" id="regPhone" placeholder="Phone (e.g. +123456789)" required pattern="^\+?[0-9\s\-()\.]{6,20}$">
+            <input type="email" id="regEmail" placeholder="Email" required>
+            <input type="url" id="regAvatar" placeholder="Avatar URL (optional)">
+            <input type="password" id="regPassword" placeholder="Password (max 8 chars)" maxlength="8" required>
+            <input type="password" id="regConfirmPassword" placeholder="Confirm Password" maxlength="8" required>
+            <div id="registerCaptchaQuestion"></div>
+            <input type="text" id="registerCaptchaAnswer" placeholder="CAPTCHA Answer" required>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>

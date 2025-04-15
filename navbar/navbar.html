@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar - TravelCostMate</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">TravelCostMate</div>
+        <div class="nav-right">
+            <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="loadHome()">Home</a></li>
+                <li><a href="#" onclick="loadAuth()">Login</a></li>
+                <li><a href="#" onclick="loadRegister()">Register</a></li>
+                <li><a href="#" onclick="loadAbout()">About</a></li>
+            </ul>
+            <img id="userAvatar" class="avatar hidden" src="" alt="User Avatar">
+        </div>
+    </nav>
+</body>
+</html>

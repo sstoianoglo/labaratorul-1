@@ -1,0 +1,20 @@
+.meniu {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.meniu-btn {
+    padding: 0.5rem 1rem;
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.meniu-btn:hover {
+    background-color: #008fcc;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelCostMate</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="navbar/navbar.css">
+    <link rel="stylesheet" href="meniu/meniu.css">
+    <link rel="stylesheet" href="auth/auth.css">
+    <link rel="stylesheet" href="register/register.css">
+    <link rel="stylesheet" href="footer/footer.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="meniu"></div>
+
+    <main class="content">
+        <div class="container">
+            <div id="authSection">
+                <div class="form-box">
+                    <div class="button-box">
+                        <button class="toggle-btn active" onclick="loadAuth()">Login</button>
+                        <button class="toggle-btn" onclick="loadRegister()">Register</button>
+                        <button class="toggle-btn" onclick="loadAbout()">About</button>
+                    </div>
+                    <div id="form-container">
+                        <div id="auth"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="costSection" class="hidden">
+                <div class="form-box">
+                    <div class="cost-form">
+                        <h1>Vacation Cost Estimator</h1>
+                        <form id="costForm" onsubmit="return calculateCost(event)">
+                            <label for="destination">Destination</label>
+                            <select id="destination" required>
+                                <option value="" disabled selected>Select a destination</option>
+                                <option value="bali">Bali, Indonesia</option>
+                                <option value="paris">Paris, France</option>
+                                <option value="new-york">New York, USA</option>
+                                <option value="tokyo">Tokyo, Japan</option>
+                            </select>
+
+                            <label for="duration">Duration (days)</label>
+                            <input type="number" id="duration" min="1" required placeholder="Enter number of days">
+
+                            <label for="travelers">Number of Travelers</label>
+                            <input type="number" id="travelers" min="1" required placeholder="Enter number of travelers">
+
+                            <label for="accommodation">Accommodation Type</label>
+                            <select id="accommodation" required>
+                                <option value="" disabled selected>Select accommodation type</option>
+                                <option value="budget">Budget ($50/night)</option>
+                                <option value="midrange">Mid-range ($100/night)</option>
+                                <option value="luxury">Luxury ($200/night)</option>
+                            </select>
+
+                            <label for="activities">Daily Activities Budget</label>
+                            <select id="activities" required>
+                                <option value="" disabled selected>Select activity budget</option>
+                                <option value="low">Low ($20/day)</option>
+                                <option value="medium">Medium ($50/day)</option>
+                                <option value="high">High ($100/day)</option>
+                            </select>
+
+                            <button type="submit" class="submit-btn">Calculate Cost</button>
+                        </form>
+
+                        <div id="costBreakdown" style="display: none;">
+                            <h2>Cost Breakdown</h2>
+                            <p id="flightCost"></p>
+                            <p id="accommodationCost"></p>
+                            <p id="activitiesCost"></p>
+                            <p id="totalCost"></p>
+                            <div id="travelSites" style="display: none;">
+                                <h3>Book Your Trip</h3>
+                                <ul>
+                                    <li>Skyscanner</li>
+                                    <li>Booking.com</li>
+                                    <li>Expedia</li>
+                                    <li>Trip.com</li>
+                                </ul>
+                            </div>
+                            <button class="submit-btn" onclick="saveEstimate()">Save Estimate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resetSection" class="hidden">
+                <div class="form-box">
+                    <div class="reset-form">
+                        <h2>Reset Password</h2>
+                        <form id="resetForm" onsubmit="return resetPassword(event)">
+                            <input type="email" id="resetEmail" placeholder="Enter your email" required>
+                            <input type="password" id="resetPassword" placeholder="New Password (max 8 chars)" maxlength="8" required>
+                            <input type="password" id="resetConfirmPassword" placeholder="Confirm New Password" maxlength="8" required>
+                            <button type="submit" class="submit-btn">Reset Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="profect.js"></script>
+</body>
+</html>
