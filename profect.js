@@ -181,9 +181,9 @@ function showCostSection() {
     document.getElementById('meniu').classList.add('hidden');
     const avatarImg = document.getElementById('userAvatar');
     if (currentUser?.avatar && avatarImg) {
-        avatarImg.src = currentUser.avatar;
+        avatarImg.src = currentUser.avatar || 'https://via.placeholder.com/40';
         avatarImg.classList.remove('hidden');
-    } else {
+    } else if (avatarImg) {
         avatarImg.classList.add('hidden');
     }
     updateNavLinks(true);
@@ -279,7 +279,7 @@ function validateRegisterForm(event) {
         return false;
     }
 
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+    let users = JSON.parse(localStorage.getItem('users')) || [];
     if (users.some(u => u.email === email)) {
         alert('Email already registered!');
         return false;
@@ -287,9 +287,15 @@ function validateRegisterForm(event) {
 
     const newUser = { firstName, lastName, phone, email, avatar, password };
     users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
+    try {
+        localStorage.setItem('users', JSON.stringify(users));
+        alert(`Registration successful for ${firstName}! Your account has been saved.`);
+    } catch (e) {
+        alert('Error saving account. Please try again.');
+        console.error('localStorage error:', e);
+        return false;
+    }
 
-    alert('Registered successfully! Welcome to the cost estimator.');
     isLoggedIn = true;
     currentUser = newUser;
     showCostSection();
@@ -317,7 +323,7 @@ function resetPassword(event) {
         return false;
     }
 
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+    let users = JSON.parse(localStorage.getItem('users')) || [];
     const userIndex = users.findIndex(u => u.email === email);
 
     if (userIndex === -1) {
@@ -326,8 +332,15 @@ function resetPassword(event) {
     }
 
     users[userIndex].password = password;
-    localStorage.setItem('users', JSON.stringify(users));
-    alert('Password reset successful! Please log in.');
+    try {
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Password reset successful! Please log in.');
+    } catch (e) {
+        alert('Error saving new password. Please try again.');
+        console.error('localStorage error:', e);
+        return false;
+    }
+
     loadAuth();
     return true;
 }
@@ -414,8 +427,13 @@ function saveEstimate() {
 
     const estimates = JSON.parse(localStorage.getItem('estimates')) || [];
     estimates.push(window.currentEstimate);
-    localStorage.setItem('estimates', JSON.stringify(estimates));
-    alert('Estimate saved successfully!');
+    try {
+        localStorage.setItem('estimates', JSON.stringify(estimates));
+        alert('Estimate saved successfully!');
+    } catch (e) {
+        alert('Error saving estimate. Please try again.');
+        console.error('localStorage error:', e);
+    }
 }
 
 function logout() {
